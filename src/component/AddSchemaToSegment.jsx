@@ -101,7 +101,7 @@ const AddSchemaToSegment = ({ onClose }) => {
   }
 
   const getTraitColor = (traits) => {
-    return traits === 'user' ? '#5ddb78' : '#d24572';
+    return traits === 'user' ? '#5ddb78' :traits==='group'? '#d24572':'#eeeeee';
   };
 
   return (
