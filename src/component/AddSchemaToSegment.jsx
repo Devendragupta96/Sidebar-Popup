@@ -101,7 +101,7 @@ const AddSchemaToSegment = ({ onClose }) => {
   }
 
   const getTraitColor = (traits) => {
-    return traits === 'user' ? '#5ddb78' :traits==='group'? '#d24572':'#eeeeee';
+    return traits === 'user' ? '#5ddb78' : '#d24572';
   };
 
   return (
@@ -178,6 +178,16 @@ const AddSchemaToSegment = ({ onClose }) => {
         </Box>
 
         <FormControl fullWidth sx={{marginLeft:'20px'}}>
+        <Box display={'flex'} alignItems={'center'}>
+              <div
+                    style={{
+                      width: '10px',
+                      height: '10px',
+                      backgroundColor:'#eeeeee',
+                      borderRadius: '50%',
+                      marginRight: '10px'
+                    }}
+              />
           <InputLabel sx={{ fontSize: "0.9rem" }}>
             Add schema to segment
           </InputLabel>
@@ -203,6 +213,7 @@ const AddSchemaToSegment = ({ onClose }) => {
               </MenuItem>
             ))}
           </Select>
+        </Box>
         </FormControl>
 
         <p className="add_schema" onClick={handleAddSchema}>
