@@ -22,6 +22,7 @@
   .add_schema {
     color: #40b493;
     margin-top: 10px;
+    margin-left: 20px;
     font-size: smaller;
     text-align: left;
     padding: 5px;
@@ -45,3 +46,24 @@
     background-color: darkred;
   }
   
+  .legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 10px 15px;
+  }
+
+  .icon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .legend .icon:nth-of-type(1) {
+    background-color: #5ddb78;
+  }
+  
+  .legend .icon:nth-of-type(2) {
+    background-color: #d24572;
+  }

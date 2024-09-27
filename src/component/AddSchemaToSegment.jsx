@@ -7,13 +7,13 @@ import "../css/AddSchemaToSegment.css";
 import "../css/SaveSegment.css";
 
 const schemaOptions = [
-  { label: "First Name", value: "first_name" },
-  { label: "Last Name", value: "last_name" },
-  { label: "Gender", value: "gender" },
-  { label: "Age", value: "age" },
-  { label: "Account Name", value: "account_name" },
-  { label: "City", value: "city" },
-  { label: "State", value: "state" },
+  { label: "First Name", value: "first_name", traits: 'user' },
+  { label: "Last Name", value: "last_name", traits: 'user' },
+  { label: "Gender", value: "gender", traits: 'group' },
+  { label: "Age", value: "age", traits: 'user' },
+  { label: "Account Name", value: "account_name", traits: 'group' },
+  { label: "City", value: "city", traits: 'group' },
+  { label: "State", value: "state", traits: 'group' },
 ];
 
 const AddSchemaToSegment = ({ onClose }) => {
@@ -99,6 +99,10 @@ const AddSchemaToSegment = ({ onClose }) => {
     
   }
 
+  const getTraitColor = (traits) => {
+    return traits === 'user' ? '#5ddb78' : '#d24572';
+  };
+
   return (
     <div className="popup-container">
       <header className="header">
@@ -121,10 +125,26 @@ const AddSchemaToSegment = ({ onClose }) => {
           />
           <p style={{ marginBottom: '30px', color: '#5c5c5c' }}>To save your segment, you need to add the schemas to build the query</p>
         </Box>
+        <div className="legend">
+          <div className="icon"></div><span style={{fontSize:'10px'}}>User Traits</span>
+          <div className="icon"></div><span style={{fontSize:'10px'}}>Group Traits</span>
+        </div>
 
         <Box>
-          {selectedSchemas.map((schema, index) => (
-            <FormControl key={index} fullWidth margin="normal">
+          {selectedSchemas.map((schema, index) => {
+            const selectedSchema = schemaOptions.find(option => option.value === schema);
+            return(
+            <FormControl key={index} fullWidth margin="normal" sx={{marginTop:'0px'}}>
+              <Box display={'flex'} alignItems={'center'}>
+              <div
+                    style={{
+                      width: '10px',
+                      height: '10px',
+                      backgroundColor: getTraitColor(selectedSchema.traits),
+                      borderRadius: '50%',
+                      marginRight: '10px'
+                    }}
+              />
               <InputLabel>Schema</InputLabel>
               <Select
                 value={schema}
@@ -150,11 +170,13 @@ const AddSchemaToSegment = ({ onClose }) => {
                     </MenuItem>
                   ))}
               </Select>
+              </Box>
             </FormControl>
-          ))}
+            )
+        })}
         </Box>
 
-        <FormControl fullWidth>
+        <FormControl fullWidth sx={{marginLeft:'20px'}}>
           <InputLabel sx={{ fontSize: "0.9rem" }}>
             Add schema to segment
           </InputLabel>
@@ -186,7 +208,7 @@ const AddSchemaToSegment = ({ onClose }) => {
           + Add new schema
         </p>
       </div>
-      <footer style={{ padding: "20px", display: "flex", gap: "10px" }}>
+      <footer style={{ padding: "20px", display: "flex", gap: "10px", background:'#eeeeee' }}>
       <Button 
           variant="contained" 
           sx={{
