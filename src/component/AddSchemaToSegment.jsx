@@ -177,24 +177,22 @@ const AddSchemaToSegment = ({ onClose }) => {
         })}
         </Box>
 
-        <FormControl fullWidth sx={{marginLeft:'20px'}}>
+        <FormControl fullWidth marginTop='20px'>
         <Box display={'flex'} alignItems={'center'}>
-              <div
-                    style={{
-                      width: '10px',
-                      height: '10px',
-                      backgroundColor:'#eeeeee',
-                      borderRadius: '50%',
-                      marginRight: '10px'
-                    }}
-              />
-          <InputLabel sx={{ fontSize: "0.9rem" }}>
-            Add schema to segment
-          </InputLabel>
+          <div
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  backgroundColor:'#eeeeee',
+                  borderRadius: '50%',
+                  marginRight: '10px'
+                }}
+          />
           <Select
             value={currentSelection}
             onChange={handleSchemaChange}
             label="Add schema to segment"
+            displayEmpty
             sx={{
               height: "40px",
               width: "400px",
@@ -205,7 +203,7 @@ const AddSchemaToSegment = ({ onClose }) => {
             }}
           >
             <MenuItem value="">
-              <em>Select schema</em>
+              <em>Add schema to segment</em>
             </MenuItem>
             {availableSchemas.map((schema) => (
               <MenuItem key={schema.value} value={schema.value}>
