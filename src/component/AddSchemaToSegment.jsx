@@ -91,6 +91,7 @@ const AddSchemaToSegment = ({ onClose }) => {
         autoClose: 3000,
       });
       setSelectedSchemas([])
+      setAvailableSchemas(schemaOptions)
     } catch (error) {
       console.error('Error while posting data:', error); 
       toast.error("Error while saving segment.", {
